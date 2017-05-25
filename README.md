@@ -21,3 +21,4 @@ You can make local copies on your computer of the data in the data folder (recom
 ## Before We Begin: Code
 
 As with the data, you can make local copies of the code (recommended) or cut-and-paste during the course (not recommended).  You can also grab the code from the course dropbox, [here](https://www.dropbox.com/sh/8uluc1bme385hyq/AAB61UxLJ0dVyW2oPygYjKtDa?dl=0)
+
