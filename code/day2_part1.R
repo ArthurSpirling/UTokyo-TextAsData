@@ -5,7 +5,7 @@
 
 rm(list=ls())
 
-setwd("C:/Users/as9934/Dropbox/Japan_Text_Class/data/")
+setwd("C:/Users/arthur spirling/Dropbox/Japan_Text_Class/data/")
 
 
 #################
@@ -15,11 +15,16 @@ setwd("C:/Users/as9934/Dropbox/Japan_Text_Class/data/")
 #install quanteda and readtext
 library(quanteda)
 library(readtext)
+
 #let's grab the UK manifestos and create a corpus
 manifestos <- readtext("UK_manifestos/*.txt", docvarsfrom=c("filenames"))
-manifestos_corpus <- corpus(manifestos)
+manifestos_corpus <- corpus(manifestos) 
+docnames(manifestos_corpus) <- manifestos$doc_id
+
 #and let's grab SOTU too
-sotu_corpus <- corpus(readtext("sotu/*.txt",docvarsfrom=c("filenames")) )
+sotu <- readtext("sotu/*.txt",docvarsfrom=c("filenames"))
+sotu_corpus <- corpus(sotu)
+docnames(sotu_corpus) <- sotu$doc_id
 
 
 ########################
@@ -77,7 +82,7 @@ lines(low$x, low$y, col="black", lwd=2)
 pos<-read.table("dictionaries/positive-words.txt", as.is=T)
 neg <-read.table("dictionaries/negative-words.txt", as.is=T)
 
-#function just to do simply arithmatic
+#function just to do simple arithmatic
 sentiment<-function(words=c("really great good stuff bad")){
   require(quanteda)
   tok <- tokenize(words)

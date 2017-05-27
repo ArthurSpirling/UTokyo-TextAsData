@@ -5,7 +5,7 @@
 
 rm(list=ls())
 
-setwd("C:/Users/as9934/Dropbox/Japan_Text_Class/data/")
+setwd("C:/Users/arthur spirling/Dropbox/Japan_Text_Class/data/")
 
 
 #################
@@ -35,6 +35,7 @@ manifestos <- readtext("UK_manifestos/*.txt", docvarsfrom=c("filenames"))
 # We need to turn the text files into a 'corpus' so that we can do more 
 # interesting things with them
 manifestos_corpus <- corpus(manifestos)
+docnames(manifestos_corpus) <- manifestos$doc_id
 
 # let's get a summary of this corpus
 summary(manifestos_corpus)
@@ -62,7 +63,9 @@ plot(dates, num_sentences, pch=16)
 #looks like they're generally getting heftier.
 
 #hmm, how about SOTU speeches?
-sotu_corpus <- corpus(readtext("sotu/*.txt", docvarsfrom=c("filenames")) )
+sotu <- readtext("sotu/*.txt",docvarsfrom=c("filenames"))
+sotu_corpus <- corpus(sotu)
+docnames(sotu_corpus) <- sotu$doc_id
 #summary(sotu_corpus)
 
 #############################
@@ -133,7 +136,8 @@ Lab1983_vector <- dfm(Lab_1983, stem=TRUE, remove=stopwords("english"), remove_p
 as.matrix(Lab1983_vector, colnames=colnames(Lab1983_vector))[1, 1:10]
 
 #alright, let's make a dfm of our whole collection
-DTM <- dfm(manifestos_corpus, stem=T, remove=stopwords("english"))
+DTM <- dfm(manifestos_corpus, stem=T, remove=stopwords("english"),
+           remove_punct=TRUE)
 #what proportion of it is zeros?
 sum(DTM==0)/length(DTM) #so, q a bit!
 

@@ -5,7 +5,7 @@
 
 rm(list=ls())
 
-setwd("C:/Users/as9934/Dropbox/Japan_Text_Class/data/")
+setwd("C:/Users/arthur spirling/Dropbox/Japan_Text_Class/data/")
 
 
 #################
@@ -15,11 +15,18 @@ setwd("C:/Users/as9934/Dropbox/Japan_Text_Class/data/")
 #install quanteda and readtext
 library(quanteda)
 library(readtext)
+
 #let's grab the UK manifestos and create a corpus
 manifestos <- readtext("UK_manifestos/*.txt", docvarsfrom=c("filenames"))
-manifestos_corpus <- corpus(manifestos)
+manifestos_corpus <- corpus(manifestos) 
+docnames(manifestos_corpus) <- manifestos$doc_id
+
 #and let's grab SOTU too
-sotu_corpus <- corpus(readtext("sotu/*.txt",docvarsfrom=c("filenames")) )
+sotu <- readtext("sotu/*.txt",docvarsfrom=c("filenames"))
+sotu_corpus <- corpus(sotu)
+docnames(sotu_corpus) <- sotu$doc_id
+
+
 
 #we'll also need ldadtuning and topicmodels, later
 library(topicmodels)
@@ -136,7 +143,7 @@ barplot(as.numeric(termassignments["1919",])) #one place
 
 #let's try to label the topics
 topTerms <- terms(lda.model, 6)
-#hmm, maybe helpful, maybe not
+#hmm, may be helpful, may be not
 
 #let's find out how many topics is optimal for our model (just check 2 to 15)
 # this take a while -- 8 minutes or so

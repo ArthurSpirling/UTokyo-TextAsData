@@ -5,7 +5,7 @@
 
 rm(list=ls())
 
-setwd("C:/Users/as9934/Dropbox/Japan_Text_Class/data/")
+setwd("C:/Users/arthur spirling/Dropbox/Japan_Text_Class/data/")
 
 
 #################
@@ -24,20 +24,25 @@ library(lsa)
 #we'll also look at the burstiness of some terms if there is time
 library(bursts)
 
-
 #let's grab the UK manifestos and create a corpus
 manifestos <- readtext("UK_manifestos/*.txt", docvarsfrom=c("filenames"))
-manifestos_corpus <- corpus(manifestos)
+manifestos_corpus <- corpus(manifestos) 
+docnames(manifestos_corpus) <- manifestos$doc_id
 
 #and let's grab SOTU too
-sotu_corpus <- corpus(readtext("sotu/*.txt",docvarsfrom=c("filenames")) )
+sotu <- readtext("sotu/*.txt",docvarsfrom=c("filenames"))
+sotu_corpus <- corpus(sotu)
+docnames(sotu_corpus) <- sotu$doc_id
+
+
 
 #############################
 #Vector Space Representation#
 #############################
 #make a DFM
 DTM <- dfm(manifestos_corpus, stem=T, remove=stopwords("english"))
-
+#just make sure rownames are as expected
+rownames(DTM) <- docvars(manifestos_corpus)[,1]
 
 #######################
 # PROPERTIES OF TEXTS #
@@ -117,7 +122,7 @@ types <- summary(manifestos_corpus, verbose=F)$Types
 tokens <- summary(manifestos_corpus, verbose=F)$Tokens
 TTR <- types/tokens
 #let's plot them over time
-dates <- as.numeric( gsub('[^[:digit:]]','',docnames(manifestos_corpus)) )
+dates <- as.numeric( gsub('[^[:digit:]]','',rownames(DTM)) )
 x11()
 plot(dates, TTR, pch=16)
 #seem to be getting less diverse!
