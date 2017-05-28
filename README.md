@@ -13,6 +13,15 @@ Hopefully, everyone will have wireless access on the day, enabling packages to b
     install.packages("topicmodels")
     install.packages("ldatuning")
 
+It is particularly important that you have the latest version of quanteda, which at the time of writing is 0.9.9.65.  You can check this by typing 
+
+    packageVersion("quanteda")
+
+which should return 
+
+    [1] ‘0.9.9.65’
+
+
 
 ## Before We Begin: Data
 
