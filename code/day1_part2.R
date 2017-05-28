@@ -41,8 +41,6 @@ docnames(sotu_corpus) <- sotu$doc_id
 #############################
 #make a DFM
 DTM <- dfm(manifestos_corpus, stem=T, remove=stopwords("english"))
-#just make sure rownames are as expected
-rownames(DTM) <- docvars(manifestos_corpus)[,1]
 
 #######################
 # PROPERTIES OF TEXTS #

@@ -104,7 +104,7 @@ length(tokens_nopunc[[1]]) #~22.5k
 
 
 #and maybe we could remove numbers too: probably don't care about them either
-tokens_nopunc_nonum <- tokenize(Lab_1983, remove_punct=TRUE, remove_numbers=FALSE)
+tokens_nopunc_nonum <- tokenize(Lab_1983, remove_punct=TRUE, remove_numbers=TRUE)
 #can check
 length(tokens_nopunc_nonum[[1]]) #~22.4k
 
