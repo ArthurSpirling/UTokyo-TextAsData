@@ -2,7 +2,7 @@
 
 These materials are for the University of Tokyo 'Text as Data' course, taught June 3--4, 2017.  You will need the statistical environment R to follow along with the exercises.  Please ensure you have an (up to date) copy of R prior to the course starting.
 
-In terms of an overview, on the first day we will cover the process of making text into data, along with some descriptive inference ideas.  On the second day, we will take a look at some popular [supervised](https://en.wikipedia.org/wiki/Supervised_learning) and [unsupervised](https://en.wikipedia.org/wiki/Unsupervised_learning) methods as used in social science.  Given the time constraints, we will take broad but inevitably shallow pass over these areas.  
+In terms of an overview, on the first day we will cover the process of making text into data, along with some descriptive inference ideas.  On the second day, we will take a look at some popular [supervised](https://en.wikipedia.org/wiki/Supervised_learning) and [unsupervised](https://en.wikipedia.org/wiki/Unsupervised_learning) methods as used in social science.  Given the time constraints, we will take a broad but inevitably shallow pass over these areas.  
 
 You can find a syllabus with an abridged set of readings in the relevant folder on this website, or available directly [here](https://www.dropbox.com/s/e0brwydy7v3qc7s/Spirling_Syllabus_Tokyo_2017.pdf?dl=0).
 
